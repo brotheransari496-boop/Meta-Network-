@@ -22,7 +22,6 @@
     100% { background-position: 100% 100%, 0% 0%; }
   }
 
-  /* Navbar */
   nav {
     display: flex; justify-content: space-between; align-items: center;
     padding: 14px 40px; background: rgba(10,14,26,0.85);
@@ -56,7 +55,6 @@
   .menu div:last-child { border-bottom: none; }
   .menu div:hover { background: #1e2a45; color: #4da6ff; }
 
-  /* Hero */
   .hero {
     min-height: 100vh; display: flex; flex-direction: column;
     justify-content: center; align-items: center; text-align: center;
@@ -106,11 +104,10 @@
   }
   .pack-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(168,85,247,0.55); }
 
-  /* Stats Bar */
   .stats-bar {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     max-width: 1000px; margin: 50px auto 0; gap: 20px;
-    padding: 0 20px;
+    padding: 0 20px; width: 100%;
   }
   .stat {
     background: rgba(18,26,46,0.6); border: 1px solid #1e2a45;
@@ -126,7 +123,6 @@
   }
   .stat p { color: #8896b0; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
 
-  /* Section common */
   section { padding: 80px 40px; }
   .section-title {
     text-align: center; font-size: 38px; margin-bottom: 12px;
@@ -135,7 +131,6 @@
   }
   .section-sub { text-align: center; color: #8896b0; margin-bottom: 50px; font-size: 15px; }
 
-  /* Features Grid (Home) */
   .features-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 25px; max-width: 1100px; margin: 0 auto;
@@ -146,13 +141,10 @@
     backdrop-filter: blur(10px); transition: 0.3s;
   }
   .feature-card:hover { border-color: #4da6ff; transform: translateY(-8px); box-shadow: 0 15px 40px rgba(77,166,255,0.15); }
-  .feature-icon {
-    font-size: 40px; margin-bottom: 15px; display: inline-block;
-  }
+  .feature-icon { font-size: 40px; margin-bottom: 15px; display: inline-block; }
   .feature-card h4 { font-size: 19px; margin-bottom: 10px; color: #fff; }
   .feature-card p { color: #8896b0; font-size: 14px; line-height: 1.6; }
 
-  /* Texture Pack Card */
   .pack-container { max-width: 1100px; margin: 0 auto; }
   .pack-card {
     display: grid; grid-template-columns: 1.2fr 1fr; gap: 0;
@@ -165,11 +157,11 @@
   .pack-card:hover { border-color: #4da6ff; box-shadow: 0 25px 70px rgba(77,166,255,0.15); }
   .pack-image {
     position: relative; overflow: hidden; min-height: 380px;
-    background: #0a0e1a; display: flex; align-items: center; justify-content: center;
+    background: #0a0e1a;
   }
   .pack-image img {
     width: 100%; height: 100%; object-fit: cover;
-    transition: 0.5s;
+    transition: 0.5s; display: block;
   }
   .pack-card:hover .pack-image img { transform: scale(1.05); }
   .pack-image-badge {
@@ -177,6 +169,7 @@
     background: linear-gradient(90deg, #4da6ff, #a855f7);
     color: #fff; padding: 6px 16px; border-radius: 20px;
     font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    z-index: 2;
   }
   .pack-info { padding: 35px 30px; display: flex; flex-direction: column; }
   .pack-info h3 { font-size: 30px; margin-bottom: 8px; color: #fff; }
@@ -208,7 +201,6 @@
   .download-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(34,197,94,0.5); }
   .download-btn svg { width: 22px; height: 22px; }
 
-  /* Reviews */
   .reviews-section { background: rgba(13,20,36,0.5); backdrop-filter: blur(10px); }
   .review-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -257,7 +249,6 @@
   }
   .submit-btn:hover { opacity: 0.85; transform: translateY(-2px); }
 
-  /* FAQ */
   .faq-section { max-width: 850px; margin: 0 auto; }
   .faq-item {
     background: rgba(18,26,46,0.6); border: 1px solid #1e2a45;
@@ -269,11 +260,11 @@
     padding: 20px 24px; cursor: pointer;
     display: flex; justify-content: space-between; align-items: center;
     font-size: 16px; font-weight: 600; color: #fff;
-    user-select: none;
+    user-select: none; gap: 15px;
   }
   .faq-question .icon {
-    color: #4da6ff; font-size: 22px; transition: 0.3s;
-    flex-shrink: 0; margin-left: 15px;
+    color: #4da6ff; font-size: 24px; transition: 0.3s;
+    flex-shrink: 0; line-height: 1;
   }
   .faq-item.open .faq-question .icon { transform: rotate(45deg); color: #a855f7; }
   .faq-answer {
@@ -282,11 +273,8 @@
     padding: 0 24px;
     color: #b0bcd4; font-size: 15px; line-height: 1.7;
   }
-  .faq-item.open .faq-answer {
-    max-height: 300px; padding: 0 24px 22px;
-  }
+  .faq-item.open .faq-answer { max-height: 400px; padding: 0 24px 22px; }
 
-  /* Modal */
   .modal {
     display: none; position: fixed; inset: 0;
     background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 400;
@@ -318,7 +306,6 @@
     text-align: center;
   }
 
-  /* Admin Lock */
   .admin-lock {
     position: fixed; bottom: 20px; right: 20px;
     background: rgba(18,26,46,0.9); border: 1px solid #1e2a45;
@@ -335,7 +322,6 @@
     font-size: 14px; border-top: 1px solid #1e2a45;
     background: rgba(10,14,26,0.8);
   }
-  footer a { color: #4da6ff; text-decoration: none; }
 
   @media (max-width: 800px) {
     .pack-card { grid-template-columns: 1fr; }
@@ -354,7 +340,6 @@
 </head>
 <body>
 
-<!-- Navbar -->
 <nav>
   <div class="nav-left">
     <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -377,7 +362,6 @@
   <div class="dots" onclick="toggleMenu(event)">⋮</div>
 </nav>
 
-<!-- Menu -->
 <div class="menu" id="menu">
   <div onclick="scrollToId('home')">🏠 Home</div>
   <div onclick="scrollToId('features')">✨ Features</div>
@@ -387,7 +371,6 @@
   <div onclick="scrollToId('faq')">❓ FAQ</div>
 </div>
 
-<!-- Hero / Home -->
 <section class="hero" id="home">
   <svg class="hero-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -420,7 +403,6 @@
     <button onclick="scrollToId('packs')" class="pack-btn">🎨 View Texture Packs</button>
   </div>
 
-  <!-- Stats -->
   <div class="stats-bar">
     <div class="stat"><h3>50K+</h3><p>Downloads</p></div>
     <div class="stat"><h3>10K+</h3><p>Happy Users</p></div>
@@ -429,7 +411,6 @@
   </div>
 </section>
 
-<!-- Features -->
 <section id="features">
   <h2 class="section-title">✨ Why Choose Meta Network?</h2>
   <p class="section-sub">Everything you need for the ultimate Minecraft experience</p>
@@ -458,7 +439,6 @@
   </div>
 </section>
 
-<!-- Texture Packs -->
 <section id="packs" style="background: rgba(13,20,36,0.4);">
   <h2 class="section-title">🎨 Texture Packs</h2>
   <p class="section-sub">Handcrafted packs for the ultimate PvP experience</p>
@@ -466,7 +446,7 @@
   <div class="pack-container">
     <div class="pack-card">
       <div class="pack-image">
-        <img id="packImage" src="https://i.imgur.com/placeholder.jpg" alt="Pigman Black Texture Pack">
+        <img id="packImage" src="https://raw.githubusercontent.com/brotheransari496-boop/Meta-Network-/9e59a5e2611e16a5192aca19a0c4238dbb85ed18/screenshot_1%20(1).webp" alt="Pigman Black Texture Pack">
         <div class="pack-image-badge">🔥 FEATURED</div>
       </div>
       <div class="pack-info">
@@ -485,4 +465,10 @@
         <div class="tags">
           <span class="tag">#PvP</span>
           <span class="tag">#Clean</span>
-          <spa
+          <span class="tag">#16X</span>
+          <span class="tag">#Black</span>
+          <span class="tag">#Low Fire</span>
+          <span class="tag">#Animated</span>
+          <span class="tag">#Simplistic</span>
+        </div>
+        <a href="https://www.mediafire.com/file/z
