@@ -22,6 +22,7 @@
     100% { background-position: 100% 100%, 0% 0%; }
   }
 
+  /* Navbar */
   nav {
     display: flex; justify-content: space-between; align-items: center;
     padding: 14px 40px; background: rgba(10,14,26,0.85);
@@ -33,22 +34,29 @@
   .logo-svg { width: 42px; height: 42px; filter: drop-shadow(0 0 8px #4da6ff); }
   nav h1 { color: #fff; font-size: 22px; letter-spacing: 2px; font-weight: 800; }
   nav h1 span { color: #4da6ff; }
-  .dots { font-size: 28px; cursor: pointer; color: #4da6ff; padding: 0 10px; user-select: none; }
-  .menu {
-    display: none; position: absolute; right: 40px; top: 65px;
-    background: #121a2e; border: 1px solid #1e2a45;
-    border-radius: 10px; width: 240px; overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  .dots {
+    font-size: 30px; cursor: pointer; color: #4da6ff;
+    padding: 4px 14px; user-select: none;
+    border-radius: 8px; transition: 0.2s; line-height: 1;
   }
-  .menu.show { display: block; }
+  .dots:hover { background: #1e2a45; }
+  .menu {
+    display: none; position: fixed; right: 20px; top: 70px;
+    background: #121a2e; border: 1px solid #1e2a45;
+    border-radius: 12px; width: 250px; overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+    z-index: 300;
+  }
+  .menu.show { display: block; animation: pop 0.2s ease; }
   .menu div {
-    padding: 14px 18px; cursor: pointer;
+    padding: 15px 20px; cursor: pointer;
     border-bottom: 1px solid #1e2a45; transition: 0.2s;
     font-size: 15px;
   }
   .menu div:last-child { border-bottom: none; }
   .menu div:hover { background: #1e2a45; color: #4da6ff; }
 
+  /* Hero */
   .hero {
     min-height: 100vh; display: flex; flex-direction: column;
     justify-content: center; align-items: center; text-align: center;
@@ -76,19 +84,49 @@
   .badge {
     background: rgba(18,32,58,0.7); border: 1px solid #4da6ff;
     padding: 10px 22px; border-radius: 30px; font-size: 14px;
-    color: #4da6ff; font-weight: 600;
-    backdrop-filter: blur(5px);
+    color: #4da6ff; font-weight: 600; backdrop-filter: blur(5px);
   }
+  .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
   .yt-btn {
     display: inline-flex; align-items: center; gap: 10px;
     background: #ff0000; color: #fff; text-decoration: none;
     padding: 14px 30px; border-radius: 30px; font-weight: 700;
-    font-size: 16px; transition: 0.3s;
+    font-size: 16px; transition: 0.3s; border: none; cursor: pointer;
     box-shadow: 0 6px 20px rgba(255,0,0,0.35);
   }
   .yt-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255,0,0,0.55); }
   .yt-btn svg { width: 24px; height: 24px; }
+  .pack-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(90deg, #4da6ff, #a855f7); color: #fff;
+    text-decoration: none; padding: 14px 30px; border-radius: 30px;
+    font-weight: 700; font-size: 16px; transition: 0.3s;
+    border: none; cursor: pointer;
+    box-shadow: 0 6px 20px rgba(77,166,255,0.35);
+  }
+  .pack-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(168,85,247,0.55); }
 
+  /* Stats Bar */
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    max-width: 1000px; margin: 50px auto 0; gap: 20px;
+    padding: 0 20px;
+  }
+  .stat {
+    background: rgba(18,26,46,0.6); border: 1px solid #1e2a45;
+    border-radius: 16px; padding: 25px 15px; text-align: center;
+    backdrop-filter: blur(10px); transition: 0.3s;
+  }
+  .stat:hover { border-color: #4da6ff; transform: translateY(-5px); }
+  .stat h3 {
+    font-size: 32px; font-weight: 800;
+    background: linear-gradient(90deg, #4da6ff, #a855f7);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 5px;
+  }
+  .stat p { color: #8896b0; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* Section common */
   section { padding: 80px 40px; }
   .section-title {
     text-align: center; font-size: 38px; margin-bottom: 12px;
@@ -97,6 +135,24 @@
   }
   .section-sub { text-align: center; color: #8896b0; margin-bottom: 50px; font-size: 15px; }
 
+  /* Features Grid (Home) */
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px; max-width: 1100px; margin: 0 auto;
+  }
+  .feature-card {
+    background: rgba(18,26,46,0.6); border: 1px solid #1e2a45;
+    border-radius: 18px; padding: 30px 25px; text-align: center;
+    backdrop-filter: blur(10px); transition: 0.3s;
+  }
+  .feature-card:hover { border-color: #4da6ff; transform: translateY(-8px); box-shadow: 0 15px 40px rgba(77,166,255,0.15); }
+  .feature-icon {
+    font-size: 40px; margin-bottom: 15px; display: inline-block;
+  }
+  .feature-card h4 { font-size: 19px; margin-bottom: 10px; color: #fff; }
+  .feature-card p { color: #8896b0; font-size: 14px; line-height: 1.6; }
+
+  /* Texture Pack Card */
   .pack-container { max-width: 1100px; margin: 0 auto; }
   .pack-card {
     display: grid; grid-template-columns: 1.2fr 1fr; gap: 0;
@@ -109,7 +165,7 @@
   .pack-card:hover { border-color: #4da6ff; box-shadow: 0 25px 70px rgba(77,166,255,0.15); }
   .pack-image {
     position: relative; overflow: hidden; min-height: 380px;
-    background: #0a0e1a;
+    background: #0a0e1a; display: flex; align-items: center; justify-content: center;
   }
   .pack-image img {
     width: 100%; height: 100%; object-fit: cover;
@@ -149,12 +205,10 @@
     transition: 0.3s; margin-top: auto;
     box-shadow: 0 8px 25px rgba(34,197,94,0.3);
   }
-  .download-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(34,197,94,0.5);
-  }
+  .download-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(34,197,94,0.5); }
   .download-btn svg { width: 22px; height: 22px; }
 
+  /* Reviews */
   .reviews-section { background: rgba(13,20,36,0.5); backdrop-filter: blur(10px); }
   .review-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -203,26 +257,60 @@
   }
   .submit-btn:hover { opacity: 0.85; transform: translateY(-2px); }
 
+  /* FAQ */
+  .faq-section { max-width: 850px; margin: 0 auto; }
+  .faq-item {
+    background: rgba(18,26,46,0.6); border: 1px solid #1e2a45;
+    border-radius: 12px; margin-bottom: 14px; overflow: hidden;
+    transition: 0.3s; backdrop-filter: blur(10px);
+  }
+  .faq-item:hover { border-color: #4da6ff; }
+  .faq-question {
+    padding: 20px 24px; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 16px; font-weight: 600; color: #fff;
+    user-select: none;
+  }
+  .faq-question .icon {
+    color: #4da6ff; font-size: 22px; transition: 0.3s;
+    flex-shrink: 0; margin-left: 15px;
+  }
+  .faq-item.open .faq-question .icon { transform: rotate(45deg); color: #a855f7; }
+  .faq-answer {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 24px;
+    color: #b0bcd4; font-size: 15px; line-height: 1.7;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 300px; padding: 0 24px 22px;
+  }
+
+  /* Modal */
   .modal {
     display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 200;
-    padding: 20px; backdrop-filter: blur(5px);
+    background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 400;
+    padding: 20px; backdrop-filter: blur(8px);
   }
   .modal.show { display: flex; }
   .modal-box {
     background: #121a2e; border: 1px solid #4da6ff;
-    padding: 40px; border-radius: 16px; text-align: center;
-    max-width: 400px; animation: pop 0.3s ease;
+    padding: 45px 35px; border-radius: 20px; text-align: center;
+    max-width: 420px; animation: pop 0.3s ease;
+    box-shadow: 0 20px 60px rgba(77,166,255,0.2);
   }
   @keyframes pop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-  .modal-box h4 { font-size: 24px; color: #4da6ff; margin-bottom: 12px; }
-  .modal-box p { color: #b0bcd4; margin-bottom: 22px; line-height: 1.6; }
+  .modal-box .modal-icon { font-size: 50px; margin-bottom: 15px; }
+  .modal-box h4 { font-size: 26px; color: #4da6ff; margin-bottom: 12px; }
+  .modal-box p { color: #b0bcd4; margin-bottom: 25px; line-height: 1.7; font-size: 15px; }
   .modal-box button {
-    background: #4da6ff; color: #0a0e1a; border: none;
-    padding: 10px 28px; border-radius: 8px; font-weight: 700;
+    background: linear-gradient(90deg, #4da6ff, #a855f7);
+    color: #fff; border: none;
+    padding: 12px 32px; border-radius: 10px; font-weight: 700;
     cursor: pointer; font-size: 15px; margin: 0 5px;
+    transition: 0.3s;
   }
-  .modal-box button:hover { background: #a855f7; color: #fff; }
+  .modal-box button:hover { transform: translateY(-2px); opacity: 0.9; }
   .modal-box input {
     width: 100%; padding: 12px; margin-bottom: 15px;
     background: #0a0e1a; border: 1px solid #1e2a45;
@@ -230,6 +318,7 @@
     text-align: center;
   }
 
+  /* Admin Lock */
   .admin-lock {
     position: fixed; bottom: 20px; right: 20px;
     background: rgba(18,26,46,0.9); border: 1px solid #1e2a45;
@@ -246,6 +335,7 @@
     font-size: 14px; border-top: 1px solid #1e2a45;
     background: rgba(10,14,26,0.8);
   }
+  footer a { color: #4da6ff; text-decoration: none; }
 
   @media (max-width: 800px) {
     .pack-card { grid-template-columns: 1fr; }
@@ -255,7 +345,6 @@
     .hero h2 { font-size: 38px; }
     nav { padding: 12px 18px; }
     nav h1 { font-size: 17px; }
-    .menu { right: 18px; }
     section { padding: 60px 18px; }
     .section-title { font-size: 28px; }
     .pack-info { padding: 25px 20px; }
@@ -265,6 +354,7 @@
 </head>
 <body>
 
+<!-- Navbar -->
 <nav>
   <div class="nav-left">
     <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -284,15 +374,21 @@
     </svg>
     <h1>META <span>NETWORK</span></h1>
   </div>
-  <div class="dots" onclick="toggleMenu()">⋮</div>
-  <div class="menu" id="menu">
-    <div onclick="comingSoon('Client')">💻 Client</div>
-    <div onclick="comingSoon('More Texture Packs')">🎨 More Texture Packs</div>
-    <div onclick="scrollToReviews()">⭐ Reviews</div>
-  </div>
+  <div class="dots" onclick="toggleMenu(event)">⋮</div>
 </nav>
 
-<section class="hero">
+<!-- Menu -->
+<div class="menu" id="menu">
+  <div onclick="scrollToId('home')">🏠 Home</div>
+  <div onclick="scrollToId('features')">✨ Features</div>
+  <div onclick="scrollToId('packs')">🎨 Texture Packs</div>
+  <div onclick="showClientComingSoon()">💻 Client</div>
+  <div onclick="scrollToId('reviews')">⭐ Reviews</div>
+  <div onclick="scrollToId('faq')">❓ FAQ</div>
+</div>
+
+<!-- Hero / Home -->
+<section class="hero" id="home">
   <svg class="hero-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -316,14 +412,55 @@
     <div class="badge">⚡ High Performance</div>
     <div class="badge">🔒 Trusted by Players</div>
   </div>
-  <a href="https://youtube.com/@zenithpvpx?si=KIzZYkIdVkRp2RvC" target="_blank" class="yt-btn">
-    <svg viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg>
-    Subscribe on YouTube
-  </a>
+  <div class="hero-buttons">
+    <a href="https://youtube.com/@zenithpvpx?si=KIzZYkIdVkRp2RvC" target="_blank" class="yt-btn">
+      <svg viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg>
+      YouTube
+    </a>
+    <button onclick="scrollToId('packs')" class="pack-btn">🎨 View Texture Packs</button>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat"><h3>50K+</h3><p>Downloads</p></div>
+    <div class="stat"><h3>10K+</h3><p>Happy Users</p></div>
+    <div class="stat"><h3>100%</h3><p>Safe & Secure</p></div>
+    <div class="stat"><h3>24/7</h3><p>Support</p></div>
+  </div>
 </section>
 
-<section class="packs-section">
-  <h2 class="section-title">🎨 Featured Texture Pack</h2>
+<!-- Features -->
+<section id="features">
+  <h2 class="section-title">✨ Why Choose Meta Network?</h2>
+  <p class="section-sub">Everything you need for the ultimate Minecraft experience</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🛡️</div>
+      <h4>100% Safe</h4>
+      <p>No viruses, no malware. Every file is tested and verified before release.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h4>High Performance</h4>
+      <p>Optimized for maximum FPS and smooth gameplay on any device.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <h4>Premium Quality</h4>
+      <p>Handcrafted textures and clients designed by experienced players.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔄</div>
+      <h4>Regular Updates</h4>
+      <p>Always up to date with the latest Minecraft versions and features.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Texture Packs -->
+<section id="packs" style="background: rgba(13,20,36,0.4);">
+  <h2 class="section-title">🎨 Texture Packs</h2>
   <p class="section-sub">Handcrafted packs for the ultimate PvP experience</p>
 
   <div class="pack-container">
@@ -348,147 +485,4 @@
         <div class="tags">
           <span class="tag">#PvP</span>
           <span class="tag">#Clean</span>
-          <span class="tag">#16X</span>
-          <span class="tag">#Black</span>
-          <span class="tag">#Low Fire</span>
-          <span class="tag">#Animated</span>
-          <span class="tag">#Simplistic</span>
-        </div>
-        <a href="https://www.mediafire.com/file/zy1kg7orrkyoi6e/PigBlack.zip/file" 
-           target="_blank" class="download-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
-          </svg>
-          DOWNLOAD NOW
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="reviews-section" id="reviews">
-  <h2 class="section-title">⭐ Client Reviews</h2>
-  <p class="section-sub">See what our users say — and share your own experience!</p>
-
-  <div class="review-grid" id="reviewGrid"></div>
-
-  <div class="review-form">
-    <h4>✍️ Write Your Review</h4>
-    <input type="text" id="reviewName" placeholder="Your name" maxlength="30">
-    <select id="reviewStars">
-      <option value="5">★★★★★ (5 - Excellent)</option>
-      <option value="4">★★★★☆ (4 - Very Good)</option>
-      <option value="3">★★★☆☆ (3 - Good)</option>
-      <option value="2">★★☆☆☆ (2 - Average)</option>
-      <option value="1">★☆☆☆☆ (1 - Poor)</option>
-    </select>
-    <textarea id="reviewText" placeholder="Share your experience..." maxlength="300"></textarea>
-    <button class="submit-btn" onclick="addReview()">Submit Review</button>
-  </div>
-</section>
-
-<div class="admin-lock" id="adminLock" onclick="toggleAdmin()" title="Admin Panel">🔒</div>
-
-<div class="modal" id="modal">
-  <div class="modal-box" id="modalBox">
-    <h4 id="modalTitle">Coming Soon</h4>
-    <p id="modalText">This feature will be available very soon. Stay tuned!</p>
-    <button onclick="closeModal()">OK</button>
-  </div>
-</div>
-
-<footer>
-  © 2025 Meta Network. All rights reserved. 👑
-</footer>
-
-<script>
-  const ADMIN_PASSWORD = "meta123";
-  let isAdmin = false;
-
-  function toggleAdmin() {
-    if (isAdmin) {
-      isAdmin = false;
-      document.body.classList.remove('admin-mode');
-      document.getElementById('adminLock').classList.remove('active');
-      document.getElementById('adminLock').innerText = '🔒';
-      return;
-    }
-    document.getElementById('modalTitle').innerText = '🔐 Admin Login';
-    document.getElementById('modalText').innerHTML = 
-      '<input type="password" id="adminPass" placeholder="Enter password" autocomplete="off">' +
-      '<button onclick="checkAdmin()">Login</button>' +
-      '<button onclick="closeModal()" style="background:#2a3a5c;color:#fff">Cancel</button>';
-    document.getElementById('modal').classList.add('show');
-    setTimeout(() => document.getElementById('adminPass')?.focus(), 100);
-  }
-
-  function checkAdmin() {
-    const pass = document.getElementById('adminPass').value;
-    if (pass === ADMIN_PASSWORD) {
-      isAdmin = true;
-      document.body.classList.add('admin-mode');
-      document.getElementById('adminLock').classList.add('active');
-      document.getElementById('adminLock').innerText = '👑';
-      closeModal();
-      renderReviews();
-    } else {
-      alert('❌ Wrong password!');
-    }
-  }
-
-  const defaultReviews = [
-    { name: "Ahmed R.", stars: 5, text: "Meta Network's client is the best! Completely safe and no issues at all. Highly recommended." },
-    { name: "Bilal K.", stars: 5, text: "Amazing performance. Trust it and use it, no worries at all. The team is very helpful." },
-    { name: "Usman T.", stars: 4, text: "Safe and smooth experience. Waiting for more packs, will definitely use them!" },
-    { name: "Hamza S.", stars: 5, text: "Pigman Black pack is insane! The black theme looks so clean in PvP. 10/10." }
-  ];
-
-  function getReviews() {
-    const saved = localStorage.getItem('metaReviews');
-    if (saved) {
-      try { return JSON.parse(saved); } catch(e) { return defaultReviews; }
-    }
-    return defaultReviews;
-  }
-
-  function saveReviews(reviews) {
-    localStorage.setItem('metaReviews', JSON.stringify(reviews));
-  }
-
-  function renderReviews() {
-    const grid = document.getElementById('reviewGrid');
-    const reviews = getReviews();
-    grid.innerHTML = '';
-    reviews.forEach((r, i) => {
-      const stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
-      const card = document.createElement('div');
-      card.className = 'review-card';
-      card.innerHTML = `
-        <button class="del-btn" onclick="deleteReview(${i})" title="Delete">✕</button>
-        <div class="stars">${stars}</div>
-        <p>${escapeHtml(r.text)}</p>
-        <span>— ${escapeHtml(r.name)}</span>
-      `;
-      grid.appendChild(card);
-    });
-  }
-
-  function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  function addReview() {
-    const name = document.getElementById('reviewName').value.trim();
-    const stars = parseInt(document.getElementById('reviewStars').value);
-    const text = document.getElementById('reviewText').value.trim();
-
-    if (!name || !text) {
-      alert('Please enter both your name and review!');
-      return;
-    }
-
-    const review
+          <spa
