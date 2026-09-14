@@ -22,39 +22,45 @@
     100% { background-position: 100% 100%, 0% 0%; }
   }
 
+  /* Navbar */
   nav {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 14px 40px; background: rgba(10,14,26,0.85);
+    padding: 14px 40px; background: rgba(10,14,26,0.95);
     backdrop-filter: blur(12px);
-    position: fixed; width: 100%; top: 0; z-index: 100;
+    position: fixed; width: 100%; top: 0; z-index: 9999;
     border-bottom: 1px solid #1e2a45;
   }
   .nav-left { display: flex; align-items: center; gap: 12px; }
   .logo-svg { width: 42px; height: 42px; filter: drop-shadow(0 0 8px #4da6ff); }
   nav h1 { color: #fff; font-size: 22px; letter-spacing: 2px; font-weight: 800; }
   nav h1 span { color: #4da6ff; }
-  .dots {
-    font-size: 30px; cursor: pointer; color: #4da6ff;
-    padding: 4px 14px; user-select: none;
-    border-radius: 8px; transition: 0.2s; line-height: 1;
+  .dots-btn {
+    background: transparent; border: none;
+    font-size: 30px; color: #4da6ff;
+    cursor: pointer; padding: 4px 14px;
+    user-select: none; line-height: 1;
+    border-radius: 8px; transition: 0.2s;
+    font-family: inherit;
   }
-  .dots:hover { background: #1e2a45; }
+  .dots-btn:hover, .dots-btn.active { background: #1e2a45; }
   .menu {
-    display: none; position: fixed; right: 20px; top: 70px;
-    background: #121a2e; border: 1px solid #1e2a45;
+    display: none;
+    position: fixed; right: 20px; top: 68px;
+    background: #121a2e; border: 1px solid #2a3a5c;
     border-radius: 12px; width: 250px; overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-    z-index: 300;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.9);
+    z-index: 10000;
   }
-  .menu.show { display: block; animation: pop 0.2s ease; }
+  .menu.show { display: block; }
   .menu div {
     padding: 15px 20px; cursor: pointer;
-    border-bottom: 1px solid #1e2a45; transition: 0.2s;
-    font-size: 15px;
+    border-bottom: 1px solid #1e2a45;
+    transition: 0.2s; font-size: 15px; color: #e0e8f5;
   }
   .menu div:last-child { border-bottom: none; }
   .menu div:hover { background: #1e2a45; color: #4da6ff; }
 
+  /* Hero */
   .hero {
     min-height: 100vh; display: flex; flex-direction: column;
     justify-content: center; align-items: center; text-align: center;
@@ -145,8 +151,8 @@
   .feature-card h4 { font-size: 19px; margin-bottom: 10px; color: #fff; }
   .feature-card p { color: #8896b0; font-size: 14px; line-height: 1.6; }
 
-  .pack-container { max-width: 1100px; margin: 0 auto; }
-  .pack-card {
+  .card-container { max-width: 1100px; margin: 0 auto 40px; }
+  .card {
     display: grid; grid-template-columns: 1.2fr 1fr; gap: 0;
     background: rgba(18,26,46,0.6);
     border: 1px solid #1e2a45; border-radius: 20px;
@@ -154,35 +160,35 @@
     transition: 0.4s;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
   }
-  .pack-card:hover { border-color: #4da6ff; box-shadow: 0 25px 70px rgba(77,166,255,0.15); }
-  .pack-image {
+  .card:hover { border-color: #4da6ff; box-shadow: 0 25px 70px rgba(77,166,255,0.15); }
+  .card-image {
     position: relative; overflow: hidden; min-height: 380px;
-    background: #0a0e1a;
+    background: #0a0e1a; display: flex; align-items: center; justify-content: center;
   }
-  .pack-image img {
+  .card-image img {
     width: 100%; height: 100%; object-fit: cover;
     transition: 0.5s; display: block;
   }
-  .pack-card:hover .pack-image img { transform: scale(1.05); }
-  .pack-image-badge {
+  .card:hover .card-image img { transform: scale(1.05); }
+  .card-image-badge {
     position: absolute; top: 16px; left: 16px;
     background: linear-gradient(90deg, #4da6ff, #a855f7);
     color: #fff; padding: 6px 16px; border-radius: 20px;
     font-size: 12px; font-weight: 700; letter-spacing: 1px;
     z-index: 2;
   }
-  .pack-info { padding: 35px 30px; display: flex; flex-direction: column; }
-  .pack-info h3 { font-size: 30px; margin-bottom: 8px; color: #fff; }
-  .pack-version {
+  .card-info { padding: 35px 30px; display: flex; flex-direction: column; }
+  .card-info h3 { font-size: 30px; margin-bottom: 8px; color: #fff; }
+  .card-version {
     display: inline-block; background: #12203a; border: 1px solid #4da6ff;
     color: #4da6ff; padding: 4px 14px; border-radius: 20px;
     font-size: 13px; font-weight: 600; margin-bottom: 18px;
     width: fit-content;
   }
-  .pack-desc { color: #b0bcd4; font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
-  .pack-meta { display: flex; gap: 20px; margin-bottom: 22px; flex-wrap: wrap; }
-  .pack-meta div { font-size: 13px; color: #8896b0; }
-  .pack-meta strong { color: #4da6ff; display: block; font-size: 15px; margin-top: 2px; }
+  .card-desc { color: #b0bcd4; font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
+  .card-meta { display: flex; gap: 20px; margin-bottom: 22px; flex-wrap: wrap; }
+  .card-meta div { font-size: 13px; color: #8896b0; }
+  .card-meta strong { color: #4da6ff; display: block; font-size: 15px; margin-top: 2px; }
   .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 25px; }
   .tag {
     background: #12203a; border: 1px solid #2a3a5c;
@@ -277,7 +283,7 @@
 
   .modal {
     display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 400;
+    background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 10001;
     padding: 20px; backdrop-filter: blur(8px);
   }
   .modal.show { display: flex; }
@@ -324,8 +330,8 @@
   }
 
   @media (max-width: 800px) {
-    .pack-card { grid-template-columns: 1fr; }
-    .pack-image { min-height: 250px; }
+    .card { grid-template-columns: 1fr; }
+    .card-image { min-height: 250px; }
   }
   @media (max-width: 600px) {
     .hero h2 { font-size: 38px; }
@@ -333,13 +339,15 @@
     nav h1 { font-size: 17px; }
     section { padding: 60px 18px; }
     .section-title { font-size: 28px; }
-    .pack-info { padding: 25px 20px; }
-    .pack-info h3 { font-size: 24px; }
+    .card-info { padding: 25px 20px; }
+    .card-info h3 { font-size: 24px; }
+    .menu { right: 10px; width: 220px; }
   }
 </style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav>
   <div class="nav-left">
     <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -359,18 +367,20 @@
     </svg>
     <h1>META <span>NETWORK</span></h1>
   </div>
-  <div class="dots" onclick="toggleMenu(event)">⋮</div>
+  <button class="dots-btn" onclick="toggleMenu(event)">⋮</button>
 </nav>
 
+<!-- Menu -->
 <div class="menu" id="menu">
-  <div onclick="scrollToId('home')">🏠 Home</div>
-  <div onclick="scrollToId('features')">✨ Features</div>
-  <div onclick="scrollToId('packs')">🎨 Texture Packs</div>
-  <div onclick="showClientComingSoon()">💻 Client</div>
-  <div onclick="scrollToId('reviews')">⭐ Reviews</div>
-  <div onclick="scrollToId('faq')">❓ FAQ</div>
+  <div onclick="goTo('home')">🏠 Home</div>
+  <div onclick="goTo('features')">✨ Features</div>
+  <div onclick="goTo('packs')">🎨 Texture Packs</div>
+  <div onclick="goTo('clients')">💻 Clients</div>
+  <div onclick="goTo('reviews')">⭐ Reviews</div>
+  <div onclick="goTo('faq')">❓ FAQ</div>
 </div>
 
+<!-- Hero -->
 <section class="hero" id="home">
   <svg class="hero-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -400,7 +410,8 @@
       <svg viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg>
       YouTube
     </a>
-    <button onclick="scrollToId('packs')" class="pack-btn">🎨 View Texture Packs</button>
+    <button onclick="goTo('packs')" class="pack-btn">🎨 View Packs</button>
+    <button onclick="goTo('clients')" class="pack-btn">💻 View Clients</button>
   </div>
 
   <div class="stats-bar">
@@ -411,6 +422,7 @@
   </div>
 </section>
 
+<!-- Features -->
 <section id="features">
   <h2 class="section-title">✨ Why Choose Meta Network?</h2>
   <p class="section-sub">Everything you need for the ultimate Minecraft experience</p>
@@ -439,25 +451,26 @@
   </div>
 </section>
 
+<!-- TEXTURE PACKS SECTION -->
 <section id="packs" style="background: rgba(13,20,36,0.4);">
   <h2 class="section-title">🎨 Texture Packs</h2>
   <p class="section-sub">Handcrafted packs for the ultimate PvP experience</p>
 
-  <div class="pack-container">
-    <div class="pack-card">
-      <div class="pack-image">
-        <img id="packImage" src="https://raw.githubusercontent.com/brotheransari496-boop/Meta-Network-/9e59a5e2611e16a5192aca19a0c4238dbb85ed18/screenshot_1%20(1).webp" alt="Pigman Black Texture Pack">
-        <div class="pack-image-badge">🔥 FEATURED</div>
+  <div class="card-container">
+    <div class="card">
+      <div class="card-image">
+        <img src="https://raw.githubusercontent.com/brotheransari496-boop/Meta-Network-/9e59a5e2611e16a5192aca19a0c4238dbb85ed18/screenshot_1%20(1).webp" alt="Pigman Black">
+        <div class="card-image-badge">🔥 FEATURED</div>
       </div>
-      <div class="pack-info">
+      <div class="card-info">
         <h3>Pigman Black</h3>
-        <div class="pack-version">Version 1.21.11</div>
-        <p class="pack-desc">
+        <div class="card-version">Version 1.21.11</div>
+        <p class="card-desc">
           A dark-themed PvP texture pack with a sleek black aesthetic. 
           Every texture is carefully designed for maximum visibility and performance 
-          in competitive gameplay. Perfect for PvP, SMP, and crystal PvP.
+          in competitive gameplay.
         </p>
-        <div class="pack-meta">
+        <div class="card-meta">
           <div>Resolution<strong>16x</strong></div>
           <div>File Size<strong>45.3 MB</strong></div>
           <div>Category<strong>PvP / Clean</strong></div>
@@ -465,10 +478,4 @@
         <div class="tags">
           <span class="tag">#PvP</span>
           <span class="tag">#Clean</span>
-          <span class="tag">#16X</span>
-          <span class="tag">#Black</span>
-          <span class="tag">#Low Fire</span>
-          <span class="tag">#Animated</span>
-          <span class="tag">#Simplistic</span>
-        </div>
-        <a href="https://www.mediafire.com/file/z
+         
