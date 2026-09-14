@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meta Network - Official</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
   body { background: #0a0e1a; color: #fff; overflow-x: hidden; }
@@ -11,15 +12,15 @@
   /* Navbar */
   nav {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 40px; background: rgba(10,14,26,0.9);
+    padding: 14px 40px; background: rgba(10,14,26,0.95);
     position: fixed; width: 100%; top: 0; z-index: 100;
     border-bottom: 1px solid #1e2a45;
   }
-  nav h1 { color: #4da6ff; font-size: 24px; letter-spacing: 2px; }
-  .dots {
-    font-size: 28px; cursor: pointer; color: #4da6ff;
-    padding: 0 10px; user-select: none;
-  }
+  .nav-left { display: flex; align-items: center; gap: 12px; }
+  .logo-svg { width: 42px; height: 42px; filter: drop-shadow(0 0 8px #4da6ff); }
+  nav h1 { color: #fff; font-size: 22px; letter-spacing: 2px; font-weight: 800; }
+  nav h1 span { color: #4da6ff; }
+  .dots { font-size: 28px; cursor: pointer; color: #4da6ff; padding: 0 10px; user-select: none; }
   .menu {
     display: none; position: absolute; right: 40px; top: 65px;
     background: #121a2e; border: 1px solid #1e2a45;
@@ -38,61 +39,106 @@
   .hero {
     min-height: 100vh; display: flex; flex-direction: column;
     justify-content: center; align-items: center; text-align: center;
-    padding: 100px 20px 60px;
+    padding: 120px 20px 60px;
     background: radial-gradient(circle at top, #14284d 0%, #0a0e1a 70%);
   }
+  .hero-logo {
+    width: 110px; height: 110px; margin-bottom: 20px;
+    animation: glow 2.5s ease-in-out infinite alternate;
+  }
+  @keyframes glow {
+    from { filter: drop-shadow(0 0 10px #4da6ff); }
+    to   { filter: drop-shadow(0 0 25px #a855f7); }
+  }
   .hero h2 {
-    font-size: 64px; font-weight: 800; letter-spacing: 3px;
+    font-size: 60px; font-weight: 800; letter-spacing: 3px;
     background: linear-gradient(90deg, #4da6ff, #a855f7);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
   }
   .hero p {
-    font-size: 18px; color: #b0bcd4; max-width: 600px;
+    font-size: 18px; color: #b0bcd4; max-width: 620px;
     margin-bottom: 30px; line-height: 1.6;
   }
-  .badges { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+  .badges { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
   .badge {
     background: #12203a; border: 1px solid #4da6ff;
     padding: 10px 22px; border-radius: 30px; font-size: 14px;
     color: #4da6ff; font-weight: 600;
   }
+  .yt-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #ff0000; color: #fff; text-decoration: none;
+    padding: 14px 30px; border-radius: 30px; font-weight: 700;
+    font-size: 16px; transition: 0.3s;
+    box-shadow: 0 6px 20px rgba(255,0,0,0.35);
+  }
+  .yt-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255,0,0,0.55); }
+  .yt-btn svg { width: 24px; height: 24px; }
 
   /* Reviews */
-  .reviews {
-    padding: 80px 40px; text-align: center;
-    background: #0d1424;
-  }
-  .reviews h3 {
-    font-size: 36px; margin-bottom: 40px; color: #fff;
-  }
+  .reviews { padding: 80px 40px; text-align: center; background: #0d1424; }
+  .reviews h3 { font-size: 36px; margin-bottom: 10px; }
+  .reviews .sub { color: #8896b0; margin-bottom: 40px; font-size: 15px; }
   .review-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px; max-width: 1100px; margin: 0 auto;
+    gap: 25px; max-width: 1100px; margin: 0 auto 40px;
   }
   .review-card {
     background: #121a2e; border: 1px solid #1e2a45;
     padding: 25px; border-radius: 14px; text-align: left;
-    transition: 0.3s;
+    transition: 0.3s; position: relative;
   }
   .review-card:hover { transform: translateY(-6px); border-color: #4da6ff; }
-  .stars { color: #ffcc00; margin-bottom: 10px; }
-  .review-card p { color: #b0bcd4; font-size: 15px; line-height: 1.6; }
+  .stars { color: #ffcc00; margin-bottom: 10px; font-size: 18px; }
+  .review-card p { color: #b0bcd4; font-size: 15px; line-height: 1.6; word-wrap: break-word; }
   .review-card span { display: block; margin-top: 14px; color: #4da6ff; font-weight: 600; }
+  .del-btn {
+    position: absolute; top: 10px; right: 12px;
+    background: transparent; border: none; color: #ff4d4d;
+    cursor: pointer; font-size: 18px; opacity: 0.5;
+  }
+  .del-btn:hover { opacity: 1; }
 
-  /* Coming Soon Modal */
+  /* Review Form */
+  .review-form {
+    max-width: 520px; margin: 0 auto; background: #121a2e;
+    border: 1px solid #1e2a45; border-radius: 16px;
+    padding: 30px; text-align: left;
+  }
+  .review-form h4 { margin-bottom: 18px; color: #4da6ff; font-size: 20px; }
+  .review-form input, .review-form textarea, .review-form select {
+    width: 100%; padding: 12px 14px; margin-bottom: 14px;
+    background: #0a0e1a; border: 1px solid #1e2a45;
+    border-radius: 8px; color: #fff; font-size: 15px;
+    font-family: inherit; outline: none;
+  }
+  .review-form input:focus, .review-form textarea:focus, .review-form select:focus {
+    border-color: #4da6ff;
+  }
+  .review-form textarea { resize: vertical; min-height: 90px; }
+  .submit-btn {
+    width: 100%; padding: 13px; border: none; border-radius: 8px;
+    background: linear-gradient(90deg, #4da6ff, #a855f7);
+    color: #fff; font-weight: 700; font-size: 16px;
+    cursor: pointer; transition: 0.3s;
+  }
+  .submit-btn:hover { opacity: 0.85; transform: translateY(-2px); }
+
+  /* Modal */
   .modal {
     display: none; position: fixed; inset: 0;
     background: rgba(0,0,0,0.75); justify-content: center; align-items: center; z-index: 200;
+    padding: 20px;
   }
   .modal.show { display: flex; }
   .modal-box {
     background: #121a2e; border: 1px solid #4da6ff;
-    padding: 40px 50px; border-radius: 16px; text-align: center;
+    padding: 40px 40px; border-radius: 16px; text-align: center;
     max-width: 400px; animation: pop 0.3s ease;
   }
   @keyframes pop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-  .modal-box h4 { font-size: 26px; color: #4da6ff; margin-bottom: 12px; }
+  .modal-box h4 { font-size: 24px; color: #4da6ff; margin-bottom: 12px; }
   .modal-box p { color: #b0bcd4; margin-bottom: 22px; line-height: 1.6; }
   .modal-box button {
     background: #4da6ff; color: #0a0e1a; border: none;
@@ -107,8 +153,11 @@
   }
 
   @media (max-width: 600px) {
-    .hero h2 { font-size: 40px; }
-    nav { padding: 16px 20px; }
+    .hero h2 { font-size: 38px; }
+    nav { padding: 12px 18px; }
+    nav h1 { font-size: 17px; }
+    .menu { right: 18px; }
+    .reviews { padding: 60px 18px; }
   }
 </style>
 </head>
@@ -116,45 +165,82 @@
 
 <!-- Navbar -->
 <nav>
-  <h1>META NETWORK</h1>
+  <div class="nav-left">
+    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#4da6ff"/>
+          <stop offset="100%" stop-color="#a855f7"/>
+        </linearGradient>
+      </defs>
+      <circle cx="50" cy="50" r="46" fill="none" stroke="url(#grad1)" stroke-width="4"/>
+      <path d="M25 65 L25 40 L37 50 L50 32 L63 50 L75 40 L75 65 Z"
+            fill="url(#grad1)" stroke="url(#grad1)" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="25" cy="38" r="4" fill="#4da6ff"/>
+      <circle cx="50" cy="30" r="4" fill="#a855f7"/>
+      <circle cx="75" cy="38" r="4" fill="#4da6ff"/>
+      <rect x="25" y="68" width="50" height="6" rx="3" fill="url(#grad1)"/>
+    </svg>
+    <h1>META <span>NETWORK</span></h1>
+  </div>
   <div class="dots" onclick="toggleMenu()">⋮</div>
   <div class="menu" id="menu">
     <div onclick="comingSoon('Client')">💻 Client</div>
     <div onclick="comingSoon('Texture Pack')">🎨 Texture Pack</div>
+    <div onclick="scrollToReviews()">⭐ Reviews</div>
   </div>
 </nav>
 
 <!-- Hero -->
 <section class="hero">
+  <svg class="hero-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#4da6ff"/>
+        <stop offset="100%" stop-color="#a855f7"/>
+      </linearGradient>
+    </defs>
+    <circle cx="50" cy="50" r="46" fill="none" stroke="url(#grad2)" stroke-width="4"/>
+    <path d="M25 65 L25 40 L37 50 L50 32 L63 50 L75 40 L75 65 Z"
+          fill="url(#grad2)" stroke="url(#grad2)" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="25" cy="38" r="4" fill="#4da6ff"/>
+    <circle cx="50" cy="30" r="4" fill="#a855f7"/>
+    <circle cx="75" cy="38" r="4" fill="#4da6ff"/>
+    <rect x="25" y="68" width="50" height="6" rx="3" fill="url(#grad2)"/>
+  </svg>
   <h2>META NETWORK</h2>
-  <p>Use karo befikar hokar — hamare client <b>100% safe aur secure</b> hain. 
-     Best performance, zero risk, aur premium experience. Aapki safety hamari zimmedari hai.</p>
+  <p>Play with confidence — our client is <b>100% safe and secure</b>.
+     Top performance, zero risk, and a premium experience. Your safety is our priority.</p>
   <div class="badges">
     <div class="badge">✔ 100% Safe Client</div>
     <div class="badge">⚡ High Performance</div>
     <div class="badge">🔒 Secure & Trusted</div>
   </div>
+  <a href="https://www.youtube.com/@MetaNetwork" target="_blank" class="yt-btn">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg>
+    Subscribe on YouTube
+  </a>
 </section>
 
 <!-- Reviews -->
-<section class="reviews">
-  <h3>What Our Users Say</h3>
-  <div class="review-grid">
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p>Meta Network ka client best hai! Bilkul safe hai aur koi issue nahi aaya. Highly recommended.</p>
-      <span>— Ahmed R.</span>
-    </div>
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p>Performance amazing hai. Trust karo aur use karo, koi tension nahi. Team bahut helpful hai.</p>
-      <span>— Bilal K.</span>
-    </div>
-    <div class="review-card">
-      <div class="stars">★★★★☆</div>
-      <p>Safe aur smooth experience. Texture pack ka wait kar raha hoon, zaroor use karunga!</p>
-      <span>— Usman T.</span>
-    </div>
+<section class="reviews" id="reviews">
+  <h3>⭐ Client Reviews</h3>
+  <p class="sub">See what our users say — and share your own experience!</p>
+
+  <div class="review-grid" id="reviewGrid"></div>
+
+  <div class="review-form">
+    <h4>✍️ Write Your Review</h4>
+    <input type="text" id="reviewName" placeholder="Your name" maxlength="30">
+    <select id="reviewStars">
+      <option value="5">★★★★★ (5 - Excellent)</option>
+      <option value="4">★★★★☆ (4 - Very Good)</option>
+      <option value="3">★★★☆☆ (3 - Good)</option>
+      <option value="2">★★☆☆☆ (2 - Average)</option>
+      <option value="1">★☆☆☆☆ (1 - Poor)</option>
+    </select>
+    <textarea id="reviewText" placeholder="Share your experience..." maxlength="300"></textarea>
+    <button class="submit-btn" onclick="addReview()">Submit Review</button>
   </div>
 </section>
 
@@ -162,25 +248,102 @@
 <div class="modal" id="modal">
   <div class="modal-box">
     <h4 id="modalTitle">Coming Soon</h4>
-    <p id="modalText">Yeh feature jald hi available hoga. Stay tuned!</p>
+    <p id="modalText">This feature will be available very soon. Stay tuned!</p>
     <button onclick="closeModal()">OK</button>
   </div>
 </div>
 
 <footer>
-  © 2025 Meta Network. All rights reserved.
+  © 2025 Meta Network. All rights reserved. 👑
 </footer>
 
 <script>
+  const defaultReviews = [
+    { name: "Ahmed R.", stars: 5, text: "Meta Network's client is the best! Completely safe and no issues at all. Highly recommended." },
+    { name: "Bilal K.", stars: 5, text: "Amazing performance. Trust it and use it, no worries at all. The team is very helpful." },
+    { name: "Usman T.", stars: 4, text: "Safe and smooth experience. Waiting for the texture pack, will definitely use it!" }
+  ];
+
+  function getReviews() {
+    const saved = localStorage.getItem('metaReviews');
+    if (saved) {
+      try { return JSON.parse(saved); } catch(e) { return defaultReviews; }
+    }
+    return defaultReviews;
+  }
+
+  function saveReviews(reviews) {
+    localStorage.setItem('metaReviews', JSON.stringify(reviews));
+  }
+
+  function renderReviews() {
+    const grid = document.getElementById('reviewGrid');
+    const reviews = getReviews();
+    grid.innerHTML = '';
+    reviews.forEach((r, i) => {
+      const stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+      const card = document.createElement('div');
+      card.className = 'review-card';
+      card.innerHTML = `
+        <button class="del-btn" onclick="deleteReview(${i})" title="Delete">✕</button>
+        <div class="stars">${stars}</div>
+        <p>${escapeHtml(r.text)}</p>
+        <span>— ${escapeHtml(r.name)}</span>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function addReview() {
+    const name = document.getElementById('reviewName').value.trim();
+    const stars = parseInt(document.getElementById('reviewStars').value);
+    const text = document.getElementById('reviewText').value.trim();
+
+    if (!name || !text) {
+      alert('Please enter both your name and review!');
+      return;
+    }
+
+    const reviews = getReviews();
+    reviews.unshift({ name, stars, text });
+    saveReviews(reviews);
+    renderReviews();
+
+    document.getElementById('reviewName').value = '';
+    document.getElementById('reviewText').value = '';
+    document.getElementById('reviewStars').value = '5';
+
+    alert('Thank you! Your review has been added. ✅');
+  }
+
+  function deleteReview(index) {
+    if (!confirm('Are you sure you want to delete this review?')) return;
+    const reviews = getReviews();
+    reviews.splice(index, 1);
+    saveReviews(reviews);
+    renderReviews();
+  }
+
   function toggleMenu() {
     document.getElementById('menu').classList.toggle('show');
+  }
+
+  function scrollToReviews() {
+    document.getElementById('menu').classList.remove('show');
+    document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });
   }
 
   function comingSoon(name) {
     document.getElementById('menu').classList.remove('show');
     document.getElementById('modalTitle').innerText = name + ' — Coming Soon';
-    document.getElementById('modalText').innerText = 
-      'Hum ' + name + ' par kaam kar rahe hain. Bahut jald aap ise use kar paoge. Shukriya!';
+    document.getElementById('modalText').innerText =
+      'We are working on ' + name + '. It will be available very soon. Thank you for your patience!';
     document.getElementById('modal').classList.add('show');
   }
 
@@ -188,11 +351,12 @@
     document.getElementById('modal').classList.remove('show');
   }
 
-  // Click outside to close
   document.getElementById('modal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
   });
+
+  renderReviews();
 </script>
 
 </body>
-</html>
+ </html>
