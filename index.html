@@ -1,1 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Network - Official</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+  body { background: #0a0e1a; color: #fff; overflow-x: hidden; }
 
+  /* Navbar */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 40px; background: rgba(10,14,26,0.9);
+    position: fixed; width: 100%; top: 0; z-index: 100;
+    border-bottom: 1px solid #1e2a45;
+  }
+  nav h1 { color: #4da6ff; font-size: 24px; letter-spacing: 2px; }
+  .dots {
+    font-size: 28px; cursor: pointer; color: #4da6ff;
+    padding: 0 10px; user-select: none;
+  }
+  .menu {
+    display: none; position: absolute; right: 40px; top: 65px;
+    background: #121a2e; border: 1px solid #1e2a45;
+    border-radius: 10px; width: 220px; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .menu.show { display: block; }
+  .menu div {
+    padding: 14px 18px; cursor: pointer;
+    border-bottom: 1px solid #1e2a45; transition: 0.2s;
+  }
+  .menu div:last-child { border-bottom: none; }
+  .menu div:hover { background: #1e2a45; color: #4da6ff; }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    padding: 100px 20px 60px;
+    background: radial-gradient(circle at top, #14284d 0%, #0a0e1a 70%);
+  }
+  .hero h2 {
+    font-size: 64px; font-weight: 800; letter-spacing: 3px;
+    background: linear-gradient(90deg, #4da6ff, #a855f7);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+  }
+  .hero p {
+    font-size: 18px; color: #b0bcd4; max-width: 600px;
+    margin-bottom: 30px; line-height: 1.6;
+  }
+  .badges { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+  .badge {
+    background: #12203a; border: 1px solid #4da6ff;
+    padding: 10px 22px; border-radius: 30px; font-size: 14px;
+    color: #4da6ff; font-weight: 600;
+  }
+
+  /* Reviews */
+  .reviews {
+    padding: 80px 40px; text-align: center;
+    background: #0d1424;
+  }
+  .reviews h3 {
+    font-size: 36px; margin-bottom: 40px; color: #fff;
+  }
+  .review-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; max-width: 1100px; margin: 0 auto;
+  }
+  .review-card {
+    background: #121a2e; border: 1px solid #1e2a45;
+    padding: 25px; border-radius: 14px; text-align: left;
+    transition: 0.3s;
+  }
+  .review-card:hover { transform: translateY(-6px); border-color: #4da6ff; }
+  .stars { color: #ffcc00; margin-bottom: 10px; }
+  .review-card p { color: #b0bcd4; font-size: 15px; line-height: 1.6; }
+  .review-card span { display: block; margin-top: 14px; color: #4da6ff; font-weight: 600; }
+
+  /* Coming Soon Modal */
+  .modal {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.75); justify-content: center; align-items: center; z-index: 200;
+  }
+  .modal.show { display: flex; }
+  .modal-box {
+    background: #121a2e; border: 1px solid #4da6ff;
+    padding: 40px 50px; border-radius: 16px; text-align: center;
+    max-width: 400px; animation: pop 0.3s ease;
+  }
+  @keyframes pop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .modal-box h4 { font-size: 26px; color: #4da6ff; margin-bottom: 12px; }
+  .modal-box p { color: #b0bcd4; margin-bottom: 22px; line-height: 1.6; }
+  .modal-box button {
+    background: #4da6ff; color: #0a0e1a; border: none;
+    padding: 10px 28px; border-radius: 8px; font-weight: 700;
+    cursor: pointer; font-size: 15px;
+  }
+  .modal-box button:hover { background: #a855f7; color: #fff; }
+
+  footer {
+    text-align: center; padding: 30px; color: #556080;
+    font-size: 14px; border-top: 1px solid #1e2a45;
+  }
+
+  @media (max-width: 600px) {
+    .hero h2 { font-size: 40px; }
+    nav { padding: 16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <h1>META NETWORK</h1>
+  <div class="dots" onclick="toggleMenu()">⋮</div>
+  <div class="menu" id="menu">
+    <div onclick="comingSoon('Client')">💻 Client</div>
+    <div onclick="comingSoon('Texture Pack')">🎨 Texture Pack</div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h2>META NETWORK</h2>
+  <p>Use karo befikar hokar — hamare client <b>100% safe aur secure</b> hain. 
+     Best performance, zero risk, aur premium experience. Aapki safety hamari zimmedari hai.</p>
+  <div class="badges">
+    <div class="badge">✔ 100% Safe Client</div>
+    <div class="badge">⚡ High Performance</div>
+    <div class="badge">🔒 Secure & Trusted</div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews">
+  <h3>What Our Users Say</h3>
+  <div class="review-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>Meta Network ka client best hai! Bilkul safe hai aur koi issue nahi aaya. Highly recommended.</p>
+      <span>— Ahmed R.</span>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>Performance amazing hai. Trust karo aur use karo, koi tension nahi. Team bahut helpful hai.</p>
+      <span>— Bilal K.</span>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★☆</div>
+      <p>Safe aur smooth experience. Texture pack ka wait kar raha hoon, zaroor use karunga!</p>
+      <span>— Usman T.</span>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h4 id="modalTitle">Coming Soon</h4>
+    <p id="modalText">Yeh feature jald hi available hoga. Stay tuned!</p>
+    <button onclick="closeModal()">OK</button>
+  </div>
+</div>
+
+<footer>
+  © 2025 Meta Network. All rights reserved.
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('menu').classList.toggle('show');
+  }
+
+  function comingSoon(name) {
+    document.getElementById('menu').classList.remove('show');
+    document.getElementById('modalTitle').innerText = name + ' — Coming Soon';
+    document.getElementById('modalText').innerText = 
+      'Hum ' + name + ' par kaam kar rahe hain. Bahut jald aap ise use kar paoge. Shukriya!';
+    document.getElementById('modal').classList.add('show');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('show');
+  }
+
+  // Click outside to close
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+</script>
+
+</body>
+</html>
